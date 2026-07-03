@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio | Your Name</title>
+    <style>
+      :root {
+        --bg: #0f172a;
+        --surface: #111827;
+        --surface-alt: #1f2937;
+        --text: #e2e8f0;
+        --accent: #38bdf8;
+        --accent-strong: #0ea5e9;
+        --border: rgba(148, 163, 184, 0.2);
+        --shadow: 0 30px 80px rgba(15, 23, 42, 0.3);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: Inter, system-ui, sans-serif;
+        background: radial-gradient(circle at top, rgba(56, 189, 248, 0.12), transparent 30%),
+          linear-gradient(180deg, #020617 0%, #0f172a 100%);
+        color: var(--text);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        backdrop-filter: blur(12px);
+        background: rgba(15, 23, 42, 0.85);
+        border-bottom: 1px solid rgba(148, 163, 184, 0.08);
+      }
+
+      .navbar {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+
+      .brand {
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        font-size: 0.95rem;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .hero {
+        min-height: calc(100vh - 80px);
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.5rem;
+      }
+
+      .hero-grid {
+        max-width: 1120px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 420px);
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.8rem, 5vw, 4.5rem);
+        margin: 0;
+        line-height: 0.98;
+      }
+
+      .hero-copy p {
+        max-width: 44rem;
+        margin: 1.5rem 0 0;
+        color: #cbd5e1;
+        line-height: 1.8;
+      }
+
+      .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 1.75rem;
+        background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+        border: none;
+        border-radius: 999px;
+        color: #fff;
+        padding: 0.95rem 1.6rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow: 0 16px 34px rgba(56, 189, 248, 0.18);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-1px);
+      }
+
+      .hero-card {
+        background: rgba(15, 23, 42, 0.95);
+        border: 1px solid var(--border);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-card h2 {
+        margin-top: 0;
+        font-size: 1.25rem;
+      }
+
+      .stats {
+        display: grid;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .stat {
+        background: rgba(30, 41, 59, 0.8);
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        border-radius: 1rem;
+        padding: 1rem 1.2rem;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.4rem;
+      }
+
+      main {
+        max-width: 1120px;
+        margin: 0 auto;
+        padding: 2rem 1.5rem 4rem;
+        display: grid;
+        gap: 3rem;
+      }
+
+      section {
+        background: rgba(15, 23, 42, 0.9);
+        border: 1px solid rgba(148, 163, 184, 0.08);
+        border-radius: 1.5rem;
+        padding: 2rem;
+        box-shadow: var(--shadow);
+      }
+
+      section h2 {
+        margin-top: 0;
+        font-size: 1.75rem;
+      }
+
+      .grid-2 {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .card-list {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .project-card,
+      .skill-pill,
+      .contact-item {
+        background: rgba(31, 41, 55, 0.85);
+        border-radius: 1rem;
+        border: 1px solid rgba(148, 163, 184, 0.12);
+        padding: 1.2rem;
+      }
+
+      .project-card h3 {
+        margin: 0 0 0.4rem;
+      }
+
+      .project-card p {
+        margin: 0 0 0.75rem;
+        color: #cbd5e1;
+        line-height: 1.7;
+      }
+
+      .project-card a {
+        font-weight: 600;
+        color: var(--accent);
+      }
+
+      .skill-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .skill-pill {
+        padding: 0.9rem 1rem;
+        text-align: center;
+        font-size: 0.95rem;
+      }
+
+      .contact-grid {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .contact-item strong {
+        display: block;
+        margin-bottom: 0.45rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem 1.5rem 2rem;
+        color: #94a3b8;
+      }
+
+      @media (max-width: 900px) {
+        .hero-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .navbar {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .navbar {
+          padding: 1rem;
+        }
+
+        .nav-links {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .stat {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" aria-label="Main navigation">
+        <a class="brand" href="#home">YOUR NAME</a>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#projects">Projects</a>
+          <a href="#skills">Skills</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p style="text-transform: uppercase; letter-spacing: 0.24em; font-size: 0.85rem; color: #7dd3fc; margin-bottom: 1rem;">Full-Stack Developer</p>
+            <h1>Building user-focused web experiences with clean, modern design.</h1>
+            <p>
+              I create websites and applications that help brands connect with customers.
+              With experience in responsive interfaces, fast performance, and clear user journeys,
+              I take projects from concept to launch.
+            </p>
+            <a class="btn-primary" href="#contact">Work with me</a>
+          </div>
+
+          <aside class="hero-card" aria-label="Overview card">
+            <h2>Portfolio overview</h2>
+            <p>
+              Welcome! I build intuitive digital products using HTML, CSS, JavaScript, and modern web frameworks.
+              Explore my recent work, technical strengths, and how to get in touch.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <strong>5+</strong>
+                Years experience
+              </div>
+              <div class="stat">
+                <strong>15+</strong>
+                Projects shipped
+              </div>
+              <div class="stat">
+                <strong>12</strong>
+                Technologies used
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>About Me</h2>
+        <div class="grid-2">
+          <p>
+            I am a dedicated developer who enjoys solving complex problems with elegant code.
+            My work blends thoughtful interaction design with reliable front-end and back-end implementation.
+          </p>
+          <p>
+            I deliver projects that are accessible, performant, and easy to maintain.
+            Whether launching a new brand site, building a dashboard, or crafting a custom web app,
+            I focus on clarity and real user value.
+          </p>
+        </div>
+      </section>
+
+      <section id="projects">
+        <h2>Featured Projects</h2>
+        <div class="card-list">
+          <article class="project-card">
+            <h3>Project Atlas</h3>
+            <p>
+              A responsive marketing site built for a SaaS startup. Includes animation, accessibility improvements,
+              and a high-converting product showcase.
+            </p>
+            <a href="#contact">View details</a>
+          </article>
+
+          <article class="project-card">
+            <h3>Flow Analytics</h3>
+            <p>
+              A dashboard interface for monitoring user engagement metrics. Features dynamic charts,
+              filters, and mobile-friendly layouts.
+            </p>
+            <a href="#contact">View details</a>
+          </article>
+
+          <article class="project-card">
+            <h3>Studio Portfolio</h3>
+            <p>
+              A polished portfolio site for a creative agency, with custom transitions,
+              project galleries, and easy content updates.
+            </p>
+            <a href="#contact">View details</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills">
+        <h2>Skills</h2>
+        <div class="skill-grid">
+          <span class="skill-pill">HTML & CSS</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">React</span>
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Responsive Design</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">Git</span>
+          <span class="skill-pill">UI/UX</span>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-grid">
+          <div class="contact-item">
+            <strong>Email</strong>
+            <a href="mailto:hello@example.com">hello@example.com</a>
+          </div>
+          <div class="contact-item">
+            <strong>Location</strong>
+            <p>Remote / Worldwide</p>
+          </div>
+          <div class="contact-item">
+            <strong>Availability</strong>
+            <p>Open to freelance and full-time opportunities.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Made with care and clean code. Update this page with your personal story and project links.</p>
+    </footer>
+  </body>
+</html>
